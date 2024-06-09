@@ -1,5 +1,5 @@
 import { useState } from "react";
-import DateObject from "react-date-object";
+// import DateObject from "react-date-object";
 
 const messages = [
   "Learn React ⚛️",
@@ -61,7 +61,7 @@ function Count() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(0);
 
-  const date = new DateObject();
+  // const date = new DateObject();
 
   function handleCountMinus() {
     setCount((c) => c - step);
