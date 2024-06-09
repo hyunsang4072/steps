@@ -79,13 +79,8 @@ function Count() {
     setStep((s) => s + 1);
   }
 
-  function getDate() {
-    const today = new Date();
-    const month = today.getMonth() + 1;
-    const year = today.getFullYear();
-    const date = today.getDate() + count;
-    return `${month}/${date}/${year}`;
-  }
+  const today = new Date();
+  today.setDate(today.getDate() + count);
 
   return (<div>
     <div>
@@ -98,6 +93,6 @@ function Count() {
       Count: {count}
       <button onClick={handleCountPlus}>+</button>
     </div>
-    <p>{count} days from today is {getDate()}</p>
+    <p>{count} days from today is {today.toDateString()}</p>
   </div>)
 }
