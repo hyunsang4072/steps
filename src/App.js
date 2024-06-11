@@ -79,20 +79,27 @@ function Count() {
     setStep((s) => s + 1);
   }
 
+  function handleReset() {
+    setCount(0);
+    setStep(0);
+  }
+
   const today = new Date();
   today.setDate(today.getDate() + count);
 
   return (<div>
     <div>
-      <button onClick={handleStepMinus}>-</button>
+      <input type='range' min='0' max='10' value={step} onChange={(e) => setStep(Number(e.target.value))} />
+      {/* <button onClick={handleStepMinus}>-</button> */}
       Step: {step}
-      <button onClick={handleStepPlus}>+</button>
+      {/* <button onClick={handleStepPlus}>+</button> */}
     </div>
     <div>
       <button onClick={handleCountMinus}>-</button>
-      Count: {count}
+      <input type='text' value={count} onChange={(e) => setCount(Number(e.target.value))} />
       <button onClick={handleCountPlus}>+</button>
     </div>
     <p>{count} days from today is {today.toDateString()}</p>
+    {(step === 0 && count === 0) ? null : <button onClick={handleReset}>Reset</button>}
   </div>)
 }
